@@ -1,0 +1,3 @@
+- begin test lapa
+    - visus head tag vajag
+    - atrisināt select required + hidden
