@@ -5,4 +5,15 @@
   margin: 0 auto;
   text-align: center; }
 
+.testArea {
+  background-color: #c8c8c8;
+  width: 100%;
+  margin: 0 auto; }
+  .testArea .progressBar {
+    background-color: lightgray; }
+  .testArea .answerButtons {
+    background-color: #c7c7c7; }
+  .testArea .nextButton {
+    background-color: #bcbcbc; }
+
 /*# sourceMappingURL=style.css.map */

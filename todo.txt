@@ -1,5 +1,8 @@
 php -S localhost:8000
 
-- begin test lapa
+- start lapa
     - visus head tag vajag
     - atrisināt select required + hidden
+
+- test lapa
+    - test.js var šmaukties ieejot browser console un nomainot parametrus (visu iekšā app() / deklerēt const array ārpus klases)
