@@ -1,3 +1,5 @@
+php -S localhost:8000
+
 - begin test lapa
     - visus head tag vajag
     - atrisināt select required + hidden
