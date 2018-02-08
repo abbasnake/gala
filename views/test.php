@@ -3,10 +3,11 @@
 <?php include("partials/header.par.php") ?>
 
 <?php 
-    $bobo = 100;
-    $name = $_GET["name"];
-    $test = $_GET["test"];
+    // getting values from form in start.php
+    $name = $_POST["name"];
+    $test = $_POST["test"];
 
+    // getting information from database
     $sql = "SELECT * FROM $test;"; // don't forget ";"
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
@@ -15,6 +16,10 @@
             echo $row["question"] . "<br/>";
         }
     }
+
+    // to save something to database
+    // $sql = "INSERT INTO bla bla bla";
+    // mysqli_query($conn, $sql);
 ?>
 
 <div class="testArea">

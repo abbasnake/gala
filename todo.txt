@@ -3,6 +3,7 @@ php -S localhost:8000
 - start lapa
     - visus head tag vajag
     - atrisināt select required + hidden
+    - rquired nav drošs iekš html, vajag citādāk
 
 - test lapa
     - test.js var šmaukties ieejot browser console un nomainot parametrus (visu iekšā app() / deklerēt const array ārpus klases)
