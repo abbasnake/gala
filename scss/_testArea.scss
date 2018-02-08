@@ -3,15 +3,19 @@
     width: 100%;
     margin: 0 auto;
 
-    .progressBar {
+    .questionDiv {
+        background-color: rgb(177, 177, 177);
+    }
+
+    .progressDiv {
         background-color: rgb(211, 211, 211);
     }
 
-    .answerButtons {
+    .answerDiv {
         background-color: rgb(199, 199, 199);
     }
 
-    .nextButton {
+    .nextDiv {
         background-color: rgb(188, 188, 188);
     }
 }

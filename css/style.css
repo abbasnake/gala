@@ -9,11 +9,13 @@
   background-color: #c8c8c8;
   width: 100%;
   margin: 0 auto; }
-  .testArea .progressBar {
+  .testArea .questionDiv {
+    background-color: #b1b1b1; }
+  .testArea .progressDiv {
     background-color: lightgray; }
-  .testArea .answerButtons {
+  .testArea .answerDiv {
     background-color: #c7c7c7; }
-  .testArea .nextButton {
+  .testArea .nextDiv {
     background-color: #bcbcbc; }
 
 /*# sourceMappingURL=style.css.map */

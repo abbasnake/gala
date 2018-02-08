@@ -2,11 +2,11 @@
 
 
 <?php 
-    $name = $_POST["name"];
-    $test = $_POST["test"];
-    echo "Name: " . $name;
-    echo "<br/>";
-    echo "Test: " . $test;
+    // $name = $_POST["name"];
+    // $test = $_POST["test"];
+    // echo "Name: " . $name;
+    // echo "<br/>";
+    // echo "Test: " . $test;
 ?>
 
 <div class="testArea"></div>

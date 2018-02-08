@@ -1,36 +1,66 @@
 /*jshint esversion: 6 */
 
 
+
+
 class Test {
     constructor(typeOfTest) {
         this.type = typeOfTest;
 
         this.questionNr = 1;
-        this.questionArray = [];
-        this.answerArray = [];
-        this.fakeAnswerArray = [];
+        this.questionArray = []; //generated below
+        this.answerArray = []; //generated below
 
         this.cacheDom();
+
+        // creating divs for all components
+        this.createDivs([
+            "questionDiv", 
+            "answerDiv", 
+            "progressDiv", 
+            "nextDiv"
+            ]);
+
+        this.displayQuestion();
+
         this.createProgressBar();
 
         // this fills question and answer arrays declared above
         this.generateQuestionsAndAnswers();
-        // same as above but for fake answers
-        this.generateFakeAnswers();
 
         this.createAnswerButtons();
+        this.answerButtonFunctionality();
         this.createNextButton();
+        this.nextButtonFunctionality();
     }
 
     cacheDom() {
         this.testArea = document.querySelector(".testArea");
     }
 
+    createDivs(arr) {
+        for(let i = 0; i < arr.length; i++) {
+            this[arr[i]] = document.createElement("div");
+            this[arr[i]].classList.add(arr[i]);
+            this.testArea.appendChild(this[arr[i]]);
+        }
+    }
+
+    displayQuestion() {
+        this.question = document.createElement("h1");
+        this.question.classList.add("question");
+        this.questionDiv.appendChild(this.question);
+    }
+
+    updateQuestion() {
+        this.question.textContent = this.questionArray[this.questionNr-1];
+    }
+
     createProgressBar() {
         this.progressBar = document.createElement("div");
-        this.progressBar.textContent = `Progress: ${this.questionNr}`;
         this.progressBar.classList.add("progressBar");
-        this.testArea.appendChild(this.progressBar);
+        this.progressDiv.appendChild(this.progressBar);
+        this.updateProgressBar();
 
     }
 
@@ -46,9 +76,11 @@ class Test {
             this.answerArray.push(num1 + num2);
             this.questionArray.push(`${num1} + ${num2}`);
         }
+        this.updateQuestion();
     }
 
-    generateFakeAnswers() {
+    returnFakeAnswers() {
+        let fakeAnswers = [];
         // generating fake answer count randomly, (1-5 in this case)
         const answerCount = Math.floor(Math.random() * 5) + 1;
         for(let i = 0; i < answerCount; i++) {
@@ -61,21 +93,28 @@ class Test {
             if(num1 + num2 === this.answerArray[i]) {
                 num2++;
             }
-            this.fakeAnswerArray.push(num1 + num2);
+            fakeAnswers.push(num1 + num2);
         }
+        // console.log(`fake answer arr ${fakeAnswers}`);
+        return fakeAnswers;
     }
 
     createAnswerButtons() {
-        // the +1 in this.fakeAnswerArray + 1 below is
-        // to make room for the actual right answer 
-        for(let i = 0; i < this.fakeAnswerArray.length + 1; i++) {
+        let allAnswers = this.returnFakeAnswers();
+        allAnswers.push(this.answerArray[this.questionNr-1]);
+        for(let i = 0; i < allAnswers.length; i++) {
             this.button = document.createElement("button");
-            this.button.textContent = `A${i+1} - ${this.fakeAnswerArray[i]}`;
+            this.button.textContent = `${allAnswers[i]}`;
             this.button.classList.add("answerButton");
-            this.testArea.appendChild(this.button);
-            // add functionality
-            this.button.addEventListener("click", () => {
-                console.log(`Button nr. ${i+1}`);
+            this.answerDiv.appendChild(this.button);
+        }
+    }
+
+    answerButtonFunctionality() {
+        const buttons = document.querySelectorAll(".answerButton");
+        for(let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", () => {
+                console.log(`Button ${buttons[i].textContent}`);
             });
         }
     }
@@ -84,8 +123,10 @@ class Test {
         this.nextButton = document.createElement("button");
         this.nextButton.textContent = "Next";
         this.nextButton.classList.add("nextButton");
-        this.testArea.appendChild(this.nextButton);
-        // add functionality
+        this.nextDiv.appendChild(this.nextButton);
+    }
+
+    nextButtonFunctionality() {
         this.nextButton.addEventListener("click", () => {
             this.questionNr++;
             this.updateProgressBar();
