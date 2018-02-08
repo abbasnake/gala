@@ -1,0 +1,121 @@
+
+-- Initial configuration of the database
+
+CREATE DATABASE printful_test;
+
+------------------------------------------- test1
+CREATE TABLE test1 (
+    id INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    question VARCHAR(50) NOT NULL,
+    answer VARCHAR(50) NOT NULL
+);
+-- question 1
+INSERT INTO test1 VALUES (
+    NULL,
+    "What Is Love?",
+    "Lady Don't Hurt Me"
+);
+-- question 2
+INSERT INTO test1 VALUES (
+    NULL,
+    "I Get By With A Little Help From",
+    "My Friends"
+);
+-- question 3
+INSERT INTO test1 VALUES (
+    NULL,
+    "Never Gonna Give You Up",
+    "Never Gonna Let You Down"
+);
+-- question 4
+INSERT INTO test1 VALUES (
+    NULL,
+    "Born To Be",
+    "Wild"
+);
+
+-------------------------------------------- test2
+CREATE TABLE test2 (
+    id INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    question VARCHAR(50) NOT NULL,
+    answer VARCHAR(5) NOT NULL
+);
+-- question 1
+INSERT INTO test2 VALUES (
+    NULL,
+    "Pi",
+    "3.14"
+);
+-- question 2
+INSERT INTO test2 VALUES (
+    NULL,
+    "2 + 2 * 2",
+    "6"
+);
+-- question 3
+INSERT INTO test2 VALUES (
+    NULL,
+    "2 + 2",
+    "4"
+);
+-- question 4
+INSERT INTO test2 VALUES (
+    NULL,
+    "8023 / 113",
+    "71"
+);
+
+-------------------------------------------- test3
+CREATE TABLE test3 (
+    id INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    question VARCHAR(50) NOT NULL,
+    answer VARCHAR(50) NOT NULL
+);
+-- question 1
+INSERT INTO test3 VALUES (
+    NULL,
+    "A Gig Is",
+    "A Gig Is A Gig Is A Gig"
+);
+-- question 2
+INSERT INTO test3 VALUES (
+    NULL,
+    "Go Ahead",
+    "Make My Day"
+);
+-- question 3
+INSERT INTO test3 VALUES (
+    NULL,
+    "The First Rule Of Fight Club",
+    "You Do Not Talk About Fight Club"
+);
+-- question 4
+INSERT INTO test3 VALUES (
+    NULL,
+    "I Love The Smell Of Napalm",
+    "In The Morning"
+);
+
+------------------------------------------ result table
+CREATE TABLE results (
+    id INT(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    test_name CHAR(5) NOT NULL,
+    test_question VARCHAR(50) NOT NULL, 
+    test_answer VARCHAR(50) NOT NULL,
+    user_name VARCHAR(50) NOT NULL,
+    user_answer VARCHAR(100) NOT NULL, 
+    is_correct ENUM("true", "false") NOT NULL,
+    dt DATETIME NOT NULL
+);
+
+-- test answer
+INSERT INTO results VALUES(
+    NULL,
+    "test2",
+    "2 + 2",
+    "4",
+    "John User",
+    "17",
+    "false",
+    NOW()
+);

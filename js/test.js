@@ -1,6 +1,25 @@
 /*jshint esversion: 6 */
 
-
+const test1 = {
+    question: {
+        one: "5 + 5",
+        two: "50 + 50",
+        three: "500 + 500",
+        four: "1 + 1"
+    },
+    answer: {
+        one: "10",
+        two: "100",
+        three: "1000",
+        four: "2"
+    },
+    fakeAnswers: {
+        one: ["1", "4", "6"],
+        two: ["10", "40", "60", "111"],
+        three: ["100", "400"],
+        four: ["1", "3", "6", "33"],
+    }
+};
 
 
 class Test {
@@ -13,16 +32,6 @@ class Test {
 
         this.cacheDom();
 
-        // creating divs for all components
-        this.createDivs([
-            "questionDiv", 
-            "answerDiv", 
-            "progressDiv", 
-            "nextDiv"
-            ]);
-
-        this.displayQuestion();
-
         this.createProgressBar();
 
         // this fills question and answer arrays declared above
@@ -30,26 +39,20 @@ class Test {
 
         this.createAnswerButtons();
         this.answerButtonFunctionality();
-        this.createNextButton();
+
         this.nextButtonFunctionality();
     }
 
     cacheDom() {
         this.testArea = document.querySelector(".testArea");
-    }
 
-    createDivs(arr) {
-        for(let i = 0; i < arr.length; i++) {
-            this[arr[i]] = document.createElement("div");
-            this[arr[i]].classList.add(arr[i]);
-            this.testArea.appendChild(this[arr[i]]);
-        }
-    }
+        this.questionDiv = document.querySelector(".questionDiv");
+        this.answerDiv = document.querySelector(".answerDiv");
+        this.progressDiv = document.querySelector(".progressDiv");
+        this.nextDiv = document.querySelector(".nextDiv");
 
-    displayQuestion() {
-        this.question = document.createElement("h1");
-        this.question.classList.add("question");
-        this.questionDiv.appendChild(this.question);
+        this.question = document.querySelector(".question");        
+        this.nextButton = document.querySelector(".nextButton");        
     }
 
     updateQuestion() {
@@ -117,13 +120,6 @@ class Test {
                 console.log(`Button ${buttons[i].textContent}`);
             });
         }
-    }
-
-    createNextButton() {
-        this.nextButton = document.createElement("button");
-        this.nextButton.textContent = "Next";
-        this.nextButton.classList.add("nextButton");
-        this.nextDiv.appendChild(this.nextButton);
     }
 
     nextButtonFunctionality() {
