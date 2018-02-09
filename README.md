@@ -1,2 +1,0 @@
-# gala
-Printful Uzdevums
