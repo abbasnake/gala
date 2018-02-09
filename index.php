@@ -1,22 +1,22 @@
 
 <?php 
-// header("Location: views/start.php");
-// die();
-require_once("mysql/dbh.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    header("Location: views/start.php");
+// require_once("mysql/dbh.php");
+
+// echo "I am the request: " . $_SERVER["REQUEST_URI"];
+
+define('CSS_PATH', '/mnt/New Volume/Codings/GitStuff/gala/css/style.css');
+
+// root page to /start
+if($_SERVER["REQUEST_URI"] == "/"){
+    header("Location: /start");
     die();
-} else {
-
-    $postreq = $_POST["start"];
-    echo $postreq;
-    // if ($_POST["url"] == "/views/start.php") {
-    //     header("Location: views/test.php");
-    //     die();
-
-    // } else {
-    //     echo "some other POST REQUEST, hello from index.php";
-    // }
-    
 }
+
+require_once("Routes.php");
+
+
+// if($_SERVER["REQUEST_METHOD"] == "GET") {
+//     // echo $_SERVER["REQUEST_URI"];
+//     include("views/start.php");
+// }

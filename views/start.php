@@ -2,7 +2,7 @@
 
 <h1>INSERT NAME AND CHOOSE TEST</h1>
 
-<form action="../index.php" method="POST">
+<form action="/test" method="POST">
     <input type="hidden" name="start" value="bobo">
     <input type="text" name="name" placeholder="Name" required>
 
