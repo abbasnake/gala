@@ -3,7 +3,7 @@
 /*
     This class is responsible for communication
     with the database
-    !THE CLASS IS CALLED AT THE END OF THIS SCRIP SO THAT WE
+    !THE CLASS IS INSTANTIATED AT THE END OF THIS SCRIP SO THAT WE
     DON'T HAVE TO DO IT EVERYWHERE IT'S NEEDED!
 */
 
@@ -67,18 +67,9 @@ class Db {
     }
 
     public function returnFakeAnswersArray($questionNr, $test) {
-        //check whitch test is used
-        if($test == "test1") {
-            $fakeAnswers = "fake_answers1";
-        }
-        if($test == "test2") {
-            $fakeAnswers = "fake_answers2";
-        }
-        if($test == "test3") {
-            $fakeAnswers = "fake_answers3";
-        }
+        //choose fake answer table according to test
+        $fakeAnswers      = $this->chooseFakeAnswers($test);
 
-        // returns $fakeAnswersArray with the fake answers
         $sql              = "SELECT * FROM $fakeAnswers;";
         $result           = mysqli_query($this->conn, $sql);
         $resultCheck      = mysqli_num_rows($result);
@@ -91,6 +82,13 @@ class Db {
         }
         return $fakeAnswersArray;
     }
+
+    private function chooseFakeAnswers($test) {
+        // if test1 then fakeAnswers1, if test7 then fakeAnswers7 etc
+        $testNumber = substr($test, -1);
+        return "fake_answers".$testNumber;
+    }
 }
 
+// instatiating the class whenever this file is imported somewhere
 $db = new Db();

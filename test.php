@@ -18,8 +18,8 @@ include("backend/mixAnswers.php"); // $allAnswers is filled
 
 <?php include("partials/header.php") ?> <!-- html header -->
 
-<h1>TEST</h1>
-<form action="backend/testLogic.php" method="POST">
+<div class="title">TEST</div>
+<form class="form" action="backend/testLogic.php" method="POST">
     <div class="question">
         Question nr <?php echo $questionNr ?> <br>
         <input type="hidden" name="currentQuestion" value="<?php echo $currentQuestion ?>">
