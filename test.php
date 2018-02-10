@@ -1,50 +1,47 @@
 <?php 
-include("db/db.php");
 session_start();
 
-$test = $_SESSION["test"];
+$test       = $_SESSION["test"];
 $questionNr = $_SESSION["questionNr"];
-// for some reason mysql doesn't allow math
-// maybe that's normal
-$questionForMysql = $questionNr - 1;
-$currentQuestion = ""; // set in getQuestions.php below
-$correctAnswer = ""; // set in getQuestions.php below
-$fakeAnswersArray = array(); // set in getQuestions.php below
 
-include("db/getQuestions.php"); // quering happens here
-// add fake answers with correct one and mix em up
-$allAnswers = array();
-array_push($allAnswers, $correctAnswer);
-for($i = 0; $i < count($fakeAnswersArray); $i++) {
-    array_push($allAnswers, $fakeAnswersArray[$i]);
-}
-shuffle($allAnswers);
+$questionForMysql = $questionNr - 1; // to avoid math in sql query
+$currentQuestion  = "";              // set in getQuestions.php below
+$correctAnswer    = "";              // set in getQuestions.php below
+$fakeAnswersArray = array();         // set in getQuestions.php below
+$allAnswers       = array();         // real answer + fake ones
 
-
+include("db/getQuestions.php");    // quering happens here
+include("backend/mixAnswers.php"); // $allAnswers is filled
 ?>
+
+
 
 <?php include("partials/header.php") ?> <!-- html header -->
 
 <h1>TEST</h1>
-<form action="backend/getTest.php" method="POST">
+<form action="backend/testLogic.php" method="POST">
     <div class="question">
-        Question nr <?php echo $questionNr ?>:
+        Question nr <?php echo $questionNr ?> <br>
+        <input type="hidden" name="currentQuestion" value="<?php echo $currentQuestion ?>">
         <?php echo $currentQuestion ?>
     </div>
-
+    <br>
     <div class="answers">
+        <input type="hidden" name="correctAnswer" value="<?php echo $correctAnswer ?>">
         Answers: <br>
+        
+        <?php for($i = 0; $i < count($allAnswers); $i++): ?>
+            <input type="radio" name="userAnswer" value="<?php echo $allAnswers[$i] ?>"> <?php echo $allAnswers[$i] ?> <br>
+        <?php endfor; ?>
 
-        <?php // generate the answer buttons
-        for($i = 0; $i < count($allAnswers); $i++){
-            echo "<input type='radio' name='userAnswer' value='$allAnswers[$i]'> $allAnswers[$i] <br>";
-        }
-        ?>
     </div>
+    <br>
     <div class="progressBar">
         Progress: <?php echo $questionNr ?>
     </div class="nextButton">
+    <br>
     <input type="submit" value="Next">
     <br>
 </form>
+
 <?php include("partials/footer.php") ?> <!-- html footer -->

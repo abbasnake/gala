@@ -220,8 +220,6 @@ INSERT INTO fake_answers3 VALUES (
 );
 
 ------------------------------------------ result table
--- need to put most at NULL so that username can be
--- saved immediately
 CREATE TABLE results (
     id INT(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     test_name CHAR(5) NOT NULL,

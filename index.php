@@ -1,17 +1,23 @@
 <?php 
-    session_start();
-    // this is to reset question number whenever
-    // a new user does a test. It is set to 0
-    // because it increments each time the test
-    // page is reloaded
-    $_SESSION["questionNr"] = 0;
+session_start();
+
+/*
+this is to reset question number whenever
+a new user does a test. It is set to 0
+because it increments each time the test
+page is reloaded
+*/
+$_SESSION["questionNr"] = 0;
+$_SESSION["userCorrect"] = 0;
+$_SESSION["userIncorrect"] = 0;
 ?>
+
 
 <?php include("partials/header.php") ?> <!-- html header -->
 
 <h1>ENTER NAME AND CHOOSE YOUR TESTINY</h1>
 
-<form action="backend/getTest.php" method="POST">
+<form action="backend/testLogic.php" method="POST">
     <input type="text" name="name" placeholder="name" required>
     <br>
     <select name="test">

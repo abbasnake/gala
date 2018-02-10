@@ -1,13 +1,14 @@
 <?php
+require_once("db.php");
 
 $sql = "INSERT INTO results VALUES (
     NULL,
     '$test',
-    'some question',
-    'some answer',
+    '$question',
+    '$answer',
     '$name',
     '$userAnswer',
-    'true',
+    '$isCorrect',
     NOW()
 )";
 mysqli_query($conn, $sql);
