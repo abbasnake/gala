@@ -18,17 +18,18 @@ if($_SESSION["questionNr"] == 0){
     and go to the next question
     */
 
-    $test = $_SESSION["test"];
-    $question = htmlentities($_POST["currentQuestion"]);
-    $answer = htmlentities($_POST["correctAnswer"]);
-    $name = $_SESSION["name"];
+    $test       = $_SESSION["test"];
+    $question   = htmlentities($_POST["currentQuestion"]);
+    $answer     = htmlentities($_POST["correctAnswer"]);
+    $name       = $_SESSION["name"];
     $userAnswer = htmlentities($_POST["userAnswer"]);
-    $isCorrect = ($answer == $userAnswer ? "true" : "false");
+    $isCorrect  = ($answer == $userAnswer ? "true" : "false");
 
     // keep track of score
     $isCorrect == "true" ? $_SESSION["userCorrect"]++ : $_SESSION["userIncorrect"]++;
 
-    include("../db/saveAnswers.php"); // save answers to db
+    require_once("../db/Db.php");
+    $db->saveToDb($test, $question, $answer, $name, $userAnswer, $isCorrect);
 
     $_SESSION["questionNr"]++;
 }

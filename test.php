@@ -4,13 +4,13 @@ session_start();
 $test       = $_SESSION["test"];
 $questionNr = $_SESSION["questionNr"];
 
-$questionForMysql = $questionNr - 1; // to avoid math in sql query
-$currentQuestion  = "";              // set in getQuestions.php below
-$correctAnswer    = "";              // set in getQuestions.php below
-$fakeAnswersArray = array();         // set in getQuestions.php below
-$allAnswers       = array();         // real answer + fake ones
+require_once("db/Db.php");    // quering happens here
+$questionAndAnswer = $db->returnQuestionAndAnswer($questionNr, $test);
+$currentQuestion   = $questionAndAnswer[0];
+$correctAnswer     = $questionAndAnswer[1];
+$fakeAnswersArray  = $db->returnFakeAnswersArray($questionNr, $test);
 
-include("db/getQuestions.php");    // quering happens here
+$allAnswers = array();             // real answer + fake ones
 include("backend/mixAnswers.php"); // $allAnswers is filled
 ?>
 
