@@ -11,6 +11,8 @@ if($_SESSION["questionNr"] == 0){
     $_SESSION["questionNr"]++;
     $_SESSION["name"] = htmlentities($_POST["name"]);
     $_SESSION["test"] = htmlentities($_POST["test"]);
+    require_once("../db/Db.php");
+    $_SESSION["questionCount"] = $db->returnNrOfQuestions($_SESSION["test"]);
 } else {
     /*
     a question has been answered

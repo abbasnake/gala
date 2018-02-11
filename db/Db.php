@@ -90,13 +90,21 @@ public function returnQuestionAndAnswer($questionNr, $test) {
     }
 
     public function returnTests() {
-        $arr = array();
-        $sql = "SHOW TABLES LIKE '%test%';";
+        $arr    = array();
+        $sql    = "SHOW TABLES LIKE '%test%';";
         $result = mysqli_query($this->conn, $sql);
+        
         while($table = mysqli_fetch_array($result)) {
             array_push($arr, $table[0]);    
         }
         return $arr;
+    }
+
+    public function returnNrOfQuestions($test) {
+        $sql    = "SELECT * FROM $test;";
+        $result = mysqli_query($this->conn, $sql);
+        $result = mysqli_num_rows($result);
+        return $result;
     }
 }
 

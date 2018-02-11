@@ -1,8 +1,9 @@
 <?php 
 session_start();
 
-$test       = $_SESSION["test"];
-$questionNr = $_SESSION["questionNr"];
+$test          = $_SESSION["test"];
+$questionNr    = $_SESSION["questionNr"];
+$questionCount = $_SESSION["questionCount"];
 
 require_once("../db/Db.php");
 $questionAndAnswer = $db->returnQuestionAndAnswer($questionNr, $test);
@@ -33,14 +34,15 @@ include("../backend/mixAnswers.php"); // $allAnswers is filled
         </div>
     <?php endfor; ?>
 
-
-    
     <div class="progressBar">
-        Progress: <?php echo $questionNr ?>
+        <?php 
+        echo htmlspecialchars($questionNr);    // to be used in javascript
+        echo htmlspecialchars($questionCount); // to be used in javascript
+        ?>
     </div class="nextButton">
     
     <button class="form-submit" type="submit" value="Next">Next</button>
     
 </form>
-
+<script src="../js/progressBar.js"></script>
 <?php include("partials/footer.php") ?> <!-- html footer -->
