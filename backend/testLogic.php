@@ -17,7 +17,6 @@ if($_SESSION["questionNr"] == 0){
     so we have to record the data 
     and go to the next question
     */
-
     $test       = $_SESSION["test"];
     $question   = htmlentities($_POST["currentQuestion"]);
     $answer     = htmlentities($_POST["correctAnswer"]);
@@ -31,9 +30,9 @@ if($_SESSION["questionNr"] == 0){
     require_once("../db/Db.php");
     $db->saveToDb($test, $question, $answer, $name, $userAnswer, $isCorrect);
 
-    $_SESSION["questionNr"]++;
+    $_SESSION["questionNr"]++; // next question
 }
 
-header("Location: ../test.php");
+header("Location: ../views/test.php"); // when all done, return to test
 die();
 

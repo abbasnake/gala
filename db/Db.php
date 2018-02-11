@@ -7,20 +7,20 @@
     DON'T HAVE TO DO IT EVERYWHERE IT'S NEEDED!
 */
 
-class Db {
+    class Db {
     // db info
-    private $dbServername = "localhost";
-    private $dbUserName   = "root";
-    private $dbPassword   = "database";
-    private $dbName       = "printful_test";
+        private $dbServername = "localhost";
+        private $dbUserName   = "root";
+        private $dbPassword   = "database";
+        private $dbName       = "printful_test";
     // connection
-    private $conn;
+        private $conn;
 
-    public function __construct() {
-        $this->makeConnection();
-    }
+        public function __construct() {
+            $this->makeConnection();
+        }
 
-    private function makeConnection() {
+        private function makeConnection() {
         $this->conn = mysqli_connect( // mysqli, not mysql
             $this->dbServername,
             $this->dbUserName,
@@ -39,12 +39,12 @@ class Db {
         '$userAnswer',
         '$isCorrect',
         NOW()
-        );";
+    );";
 
-        mysqli_query($this->conn, $sql);
-    }
+    mysqli_query($this->conn, $sql);
+}
 
-    public function returnQuestionAndAnswer($questionNr, $test) {
+public function returnQuestionAndAnswer($questionNr, $test) {
         $indexOffset     = $questionNr - 1; // because question 1 is at index 0
         $sql             = "SELECT * FROM $test LIMIT 1 OFFSET $indexOffset;";
         $result          = mysqli_query($this->conn, $sql);
@@ -87,6 +87,16 @@ class Db {
         // if test1 then fakeAnswers1, if test7 then fakeAnswers7 etc
         $testNumber = substr($test, -1);
         return "fake_answers".$testNumber;
+    }
+
+    public function returnTests() {
+        $arr = array();
+        $sql = "SHOW TABLES LIKE '%test%';";
+        $result = mysqli_query($this->conn, $sql);
+        while($table = mysqli_fetch_array($result)) {
+            array_push($arr, $table[0]);    
+        }
+        return $arr;
     }
 }
 
