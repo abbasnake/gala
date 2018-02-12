@@ -29,6 +29,9 @@ $transparent: rgba(0, 0, 0, 0);
         .form-submit:active {
             opacity: 0.3;
         }
+        .form-checkbox:hover {
+            text-decoration: underline;
+        }
         .form-progressBar {
             height: 25px;
             width: 200px;

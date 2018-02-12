@@ -1,5 +1,10 @@
 /*jshint esversion: 6 */
 
+/*
+This class creates the progress bar as well as changes
+the button text on last question
+*/
+
 class ProgressBar {
     constructor(){
         this.cacheDom();
@@ -24,6 +29,7 @@ class ProgressBar {
         this.ctx = this.canvas.getContext("2d"); // will come in handy below
     }
 
+    // current and total qusetion values from php to DOM to here
     getValues() {
         const values             = this.parentDom.innerText;
         this.questionNr          = values[0];
@@ -31,6 +37,7 @@ class ProgressBar {
         this.parentDom.innerText = "";
     }
 
+    // for effect
     createFakeBorder() {
         const margin = 5;
         const cw = this.canvas.width;
@@ -41,9 +48,13 @@ class ProgressBar {
         this.drawLine(margin, ch - margin, margin, margin);
     }
 
+
     drawProgress() {
+        // the point where the current question is on the progress bar
         const mark = this.canvas.width/this.questionCount*this.questionNr;
 
+        // drawing some random lines from beginning to current question
+        // mark on the progress bar
         for(let i = 0; i< 200 * this.questionNr; i++){
             const x1 = Math.random() * mark;
             const y1 = Math.random() * this.canvas.height;
@@ -53,6 +64,7 @@ class ProgressBar {
         }
     }
 
+    // helper function
     drawLine(x1, y1, x2, y2) {
         this.ctx.beginPath();
         this.ctx.moveTo(x1, y1);
@@ -60,6 +72,7 @@ class ProgressBar {
         this.ctx.stroke();
     }
 
+    // chnage submit button text on last question
     changeButtonText() {
         if(this.questionNr === this.questionCount) {
             this.submitButton.innerText = "Done";
@@ -67,4 +80,5 @@ class ProgressBar {
     }
 }
 
+// instantiate the class
 const pb = new ProgressBar();

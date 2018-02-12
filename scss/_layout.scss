@@ -58,10 +58,15 @@ body {
     }
 } // grid end
 
-
+// small screen adjustment
 @media (max-width: 500px) {
-    .form-checkbox {
-        grid-column: 1/3;
+    .grid {
+        .form {
+            .form-checkbox {
+                grid-column: 1/3;
+            }
+        }
     }
 }
+
 

@@ -5,7 +5,7 @@ $_SESSION["questionNr"]    = 0; // keeping track of current question
 $_SESSION["userCorrect"]   = 0; // keeping track of score
 $_SESSION["userIncorrect"] = 0; // keeping track of score
 
-require_once("../db/Db.php");       // initialize database class
+require_once("../db/Db.php");    // initialize database class
 $testArray = $db->returnTests(); // getting tests from db
 ?>
 

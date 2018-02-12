@@ -26,7 +26,16 @@ $font: 'Reenie Beanie', cursive;
             font-size: 30px;
         }
     } // from end
-    .result{
+    .result {
         font-size: 35px;
     }
 } // grid end
+
+// small screen adjustment
+@media (max-width: 500px) {
+    .grid {
+        .result {
+            font-size: 26px;
+        }
+    }
+}

@@ -11,7 +11,7 @@ $currentQuestion   = $questionAndAnswer[0];
 $correctAnswer     = $questionAndAnswer[1];
 $fakeAnswersArray  = $db->returnFakeAnswersArray($questionNr, $test);
 
-$allAnswers = array();             // real answer + fake ones
+$allAnswers = array();                // real answer + fake ones
 include("../backend/mixAnswers.php"); // $allAnswers is filled
 ?>
 
