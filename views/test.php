@@ -1,18 +1,18 @@
 <?php 
-require_once("../db/Db.php");
-require_once("../backend/Session.php");
+require_once("../db/Db.php");           // initialize database class
+require_once("../backend/Session.php"); // creates $session object
 
-$test          = $session->returnTest();
-$questionNr    = $session->returnQuestionNr();
-$questionCount = $session->returnQuestionCount();
+$test          = $session->returnTest();          // test name
+$questionNr    = $session->returnQuestionNr();    // current question nr
+$questionCount = $session->returnQuestionCount(); // total question count
 
-$questionAndAnswer = $db->returnQuestionAndAnswer($questionNr, $test);
-$currentQuestion   = $questionAndAnswer[0];
-$correctAnswer     = $questionAndAnswer[1];
-$fakeAnswersArray  = $db->returnFakeAnswersArray($questionNr, $test);
+$questionAndAnswer = $db->returnQuestionAndAnswer($questionNr, $test); // get question with correct answer from db
+$currentQuestion   = $questionAndAnswer[0];                            // the question
+$correctAnswer     = $questionAndAnswer[1];                            // it's answer
+$fakeAnswersArray  = $db->returnFakeAnswersArray($questionNr, $test);  // get fake questions from db
 
 $allAnswers = array();                // real answer + fake ones
-include("../backend/mixAnswers.php"); // $allAnswers is filled
+include("../backend/mixAnswers.php"); // $allAnswers is filled and shuffled
 ?>
 
 
@@ -45,5 +45,6 @@ include("../backend/mixAnswers.php"); // $allAnswers is filled
     
 </form>
 
-<script src="../js/ProgressBar.js"></script>
+<script src="../js/ProgressBar.js"></script> <!-- progress bar functionality -->
+
 <?php include("partials/footer.php") ?> <!-- html footer -->

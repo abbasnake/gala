@@ -1,6 +1,7 @@
 <?php
 
 /*
+helper function
 $allAnswers = correct answer + fake ones
 and shuffled
 */

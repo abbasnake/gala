@@ -1,17 +1,12 @@
 <?php 
-require_once("../backend/Session.php");
-$session->setQuestionNr(0);     // keeping track of current question
-$session->setUserScore(0, 0); // keeping track of score
-
-require_once("../db/Db.php");    // initialize database class
-$testArray = $db->returnTests(); // getting tests from db
+require_once("../backend/Session.php"); // creates $session object
+$session->setQuestionNr(0);             // keeping track of current question
+$session->setUserScore();               // sets both correct and incorrect answer count to 0
+require_once("../db/Db.php");           // initialize database class
+$testArray = $db->returnTests();        // getting tests from db
 ?>
 
-
 <?php include("partials/header.php") ?> <!-- html header -->
-
-
-
 
 <form class="form" action="../backend/testLogic.php" method="POST">
 

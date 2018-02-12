@@ -2,7 +2,7 @@
 
 /*
 This class creates the progress bar as well as changes
-the button text on last question
+the submit button text on last question
 */
 
 class ProgressBar {
@@ -29,16 +29,14 @@ class ProgressBar {
         this.ctx = this.canvas.getContext("2d"); // will come in handy below
     }
 
-    // current and total qusetion values from php to DOM to here
-    getValues() {
+    getValues() { // current and total qusetion values from php to DOM to here
         const values             = this.parentDom.innerText;
         this.questionNr          = values[0];
         this.questionCount       = values[1];
         this.parentDom.innerText = "";
     }
 
-    // for effect
-    createFakeBorder() {
+    createFakeBorder() { // for effect
         const margin = 5;
         const cw = this.canvas.width;
         const ch = this.canvas.height;
@@ -50,12 +48,9 @@ class ProgressBar {
 
 
     drawProgress() {
-        // the point where the current question is on the progress bar
-        const mark = this.canvas.width/this.questionCount*this.questionNr;
+        const mark = this.canvas.width/this.questionCount*this.questionNr; // current question mark
 
-        // drawing some random lines from beginning to current question
-        // mark on the progress bar
-        for(let i = 0; i< 200 * this.questionNr; i++){
+        for(let i = 0; i< 200 * this.questionNr; i++){ // random lines indicatin progress
             const x1 = Math.random() * mark;
             const y1 = Math.random() * this.canvas.height;
             const x2 = Math.random() * 10 + x1;
@@ -64,21 +59,19 @@ class ProgressBar {
         }
     }
 
-    // helper function
-    drawLine(x1, y1, x2, y2) {
+    drawLine(x1, y1, x2, y2) { // helper function
         this.ctx.beginPath();
         this.ctx.moveTo(x1, y1);
         this.ctx.lineTo(x2, y2);
         this.ctx.stroke();
     }
 
-    // chnage submit button text on last question
-    changeButtonText() {
+    changeButtonText() { // change submit button text on last question
         if(this.questionNr === this.questionCount) {
             this.submitButton.innerText = "Done";
         }
     }
 }
 
-// instantiate the class
-const pb = new ProgressBar();
+
+const pb = new ProgressBar(); // initialize the class

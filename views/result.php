@@ -1,9 +1,9 @@
 <?php 
-require_once("../backend/Session.php");
-$name = $session->returnUserName();
-$score = $session->returnUserScore();
-$correct = $score[0];
-$combined = $score[0] + $score[1];
+require_once("../backend/Session.php");  // creates $session object
+$name     = $session->returnUserName();  // get user name
+$score    = $session->returnUserScore(); // get score
+$correct  = $score[0];                   // correct answer count
+$combined = $score[0] + $score[1];       // total question count
 ?>
 
 <?php include("partials/header.php") ?> <!-- html header -->
@@ -19,5 +19,5 @@ $combined = $score[0] + $score[1];
 <?php include("partials/footer.php") ?> <!-- html footer -->
 
 <?php
-$session->end();
+$session->end(); // kill session
 ?>

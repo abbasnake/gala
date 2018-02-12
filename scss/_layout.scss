@@ -58,8 +58,8 @@ body {
     }
 } // grid end
 
-// small screen adjustment
-@media (max-width: 500px) {
+
+@media (max-width: 500px) { // small screen adjustment
     .grid {
         .form {
             .form-checkbox {

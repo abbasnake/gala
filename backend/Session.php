@@ -1,5 +1,12 @@
 <?php
 
+/*
+dealing with all the session variables in this class
+although I think it needlessly complicates and bloats 
+things
+THE CLASS IS INITIALIZED AT THE BOTTOM OF THIS PAGE
+*/
+
 class Session {
     public function __construct(){
         session_start();
@@ -25,9 +32,9 @@ class Session {
         return $_SESSION["questionCount"];
     }
 
-    public function setUserScore($correct, $incorrect) {
-        $_SESSION["userCorrect"] = $correct;
-        $_SESSION["userIncorrect"] = $incorrect;
+    public function setUserScore() {
+        $_SESSION["userCorrect"] = 0;
+        $_SESSION["userIncorrect"] = 0;
     }
 
     public function incrementCorrect() {
@@ -66,4 +73,4 @@ class Session {
     }
 }
 
-$session = new Session();
+$session = new Session(); // initializing class
