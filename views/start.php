@@ -1,9 +1,7 @@
 <?php 
-session_start();
-
-$_SESSION["questionNr"]    = 0; // keeping track of current question
-$_SESSION["userCorrect"]   = 0; // keeping track of score
-$_SESSION["userIncorrect"] = 0; // keeping track of score
+require_once("../backend/Session.php");
+$session->setQuestionNr(0);     // keeping track of current question
+$session->setUserScore(0, 0); // keeping track of score
 
 require_once("../db/Db.php");    // initialize database class
 $testArray = $db->returnTests(); // getting tests from db
@@ -16,6 +14,7 @@ $testArray = $db->returnTests(); // getting tests from db
 
 
 <form class="form" action="../backend/testLogic.php" method="POST">
+
     <div class="form-title">CHOOSE YOUR TESTINY</div>
 
     <div class="form-name">
@@ -35,6 +34,7 @@ $testArray = $db->returnTests(); // getting tests from db
     </div>
 
     <button class="form-submit" type="submit">Go</button>
+
 </form>
 
 <?php include("partials/footer.php") ?> <!-- html footer -->

@@ -1,11 +1,11 @@
 <?php 
-session_start();
-
-$test          = $_SESSION["test"];
-$questionNr    = $_SESSION["questionNr"];
-$questionCount = $_SESSION["questionCount"];
-
 require_once("../db/Db.php");
+require_once("../backend/Session.php");
+
+$test          = $session->returnTest();
+$questionNr    = $session->returnQuestionNr();
+$questionCount = $session->returnQuestionCount();
+
 $questionAndAnswer = $db->returnQuestionAndAnswer($questionNr, $test);
 $currentQuestion   = $questionAndAnswer[0];
 $correctAnswer     = $questionAndAnswer[1];

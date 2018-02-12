@@ -1,32 +1,32 @@
 <?php
 
 /*
-    This class is responsible for communication
-    with the database
-    !THE CLASS IS INSTANTIATED AT THE END OF THIS SCRIP SO THAT WE
-    DON'T HAVE TO DO IT EVERYWHERE IT'S NEEDED!
+This class is responsible for communication
+with the database
+!THE CLASS IS INSTANTIATED AT THE END OF THIS SCRIP SO THAT WE
+DON'T HAVE TO DO IT EVERYWHERE IT'S NEEDED!
 */
 
-    class Db {
+class Db {
     // db info
-        private $dbServername = "localhost";
-        private $dbUserName   = "root";
-        private $dbPassword   = "database";
-        private $dbName       = "printful_test";
+    private $dbServername = "localhost";
+    private $dbUserName   = "root";
+    private $dbPassword   = "database";
+    private $dbName       = "printful_test";
     // connection
-        private $conn;
+    private $conn;
 
-        public function __construct() {
-            $this->makeConnection();
-        }
+    public function __construct() {
+        $this->makeConnection();
+    }
 
-        private function makeConnection() {
-        $this->conn = mysqli_connect( // mysqli, not mysql
-            $this->dbServername,
-            $this->dbUserName,
-            $this->dbPassword,
-            $this->dbName
-        );
+    private function makeConnection() {
+    $this->conn = mysqli_connect( // mysqli, not mysql
+        $this->dbServername,
+        $this->dbUserName,
+        $this->dbPassword,
+        $this->dbName
+    );
     }
 
     public function saveToDb($test, $question, $answer, $name, $userAnswer, $isCorrect){
@@ -42,9 +42,9 @@
     );";
 
     mysqli_query($this->conn, $sql);
-}
+    }
 
-public function returnQuestionAndAnswer($questionNr, $test) {
+    public function returnQuestionAndAnswer($questionNr, $test) {
         $indexOffset     = $questionNr - 1; // because question 1 is at index 0
         $sql             = "SELECT * FROM $test LIMIT 1 OFFSET $indexOffset;";
         $result          = mysqli_query($this->conn, $sql);
