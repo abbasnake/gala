@@ -1,0 +1,41 @@
+
+$font: 'Reenie Beanie', cursive; // google font
+
+.grid {
+    font-family: $font;
+    font-size: 60px;
+    .form {
+        font-size: 35px;
+        .form-name {
+            .form-name-input {
+                font-family: $font;
+                font-size: 30px;
+            }
+        } // form-name end
+        .form-select {
+            .form-select-input {
+                font-family: $font;
+                font-size: 30px;
+            }
+        } // form-select end
+        .form-submit {
+            font-family: $font;
+            font-size: 50px;
+        }
+        .form-checkbox {
+            font-size: 30px;
+        }
+    } // from end
+    .result {
+        font-size: 35px;
+    }
+} // grid end
+
+
+@media (max-width: 500px) { // small screen adjustment
+    .grid {
+        .result {
+            font-size: 26px;
+        }
+    }
+}

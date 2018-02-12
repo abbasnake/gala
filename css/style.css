@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: 100vh;
+  text-align: center; }
+  .grid .form {
+    display: grid;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    grid-template-columns: 1fr 1fr;
+    min-width: 300px; }
+    .grid .form .form-title {
+      align-self: center;
+      grid-column: 1/3;
+      justify-self: center; }
+    .grid .form .form-name {
+      align-self: center;
+      grid-column: 1/3;
+      justify-self: center; }
+    .grid .form .form-select {
+      align-self: center;
+      grid-column: 1/3;
+      justify-self: center; }
+    .grid .form .form-submit {
+      align-self: center;
+      grid-column: 1/3;
+      justify-self: center; }
+    .grid .form .form-question {
+      grid-column: 1/3; }
+    .grid .form .form-checkbox {
+      justify-self: start;
+      margin: 2px; }
+    .grid .form .form-progressBar {
+      align-self: center;
+      grid-column: 1/3;
+      justify-self: center; }
+    .grid .form .form-canvas {
+      margin-bottom: 5px; }
+  .grid .result {
+    grid-column: 2/3;
+    grid-row: 2/4; }
+
+@media (max-width: 500px) {
+  .grid .form .form-checkbox {
+    grid-column: 1/3; } }
+.grid {
+  background-image: url("../img/desk3.jpeg");
+  background-position: 50% 60%;
+  background-repeat: no-repeat; }
+
+.grid {
+  font-family: "Reenie Beanie", cursive;
+  font-size: 60px; }
+  .grid .form {
+    font-size: 35px; }
+    .grid .form .form-name .form-name-input {
+      font-family: "Reenie Beanie", cursive;
+      font-size: 30px; }
+    .grid .form .form-select .form-select-input {
+      font-family: "Reenie Beanie", cursive;
+      font-size: 30px; }
+    .grid .form .form-submit {
+      font-family: "Reenie Beanie", cursive;
+      font-size: 50px; }
+    .grid .form .form-checkbox {
+      font-size: 30px; }
+  .grid .result {
+    font-size: 35px; }
+
+@media (max-width: 500px) {
+  .grid .result {
+    font-size: 26px; } }
+.grid .form .form-name .form-name-input {
+  background-color: transparent;
+  border: none;
+  height: 30px;
+  width: 150px; }
+.grid .form .form-select .form-select-input {
+  background-color: transparent;
+  border: none;
+  height: 30px;
+  width: 150px; }
+.grid .form .form-submit {
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 45%;
+  height: 50px;
+  outline: none; }
+.grid .form .form-submit:active {
+  opacity: 0.3; }
+.grid .form .form-checkbox:hover {
+  text-decoration: underline; }
+.grid .form .form-progressBar {
+  height: 25px;
+  width: 200px; }
+.grid .form .form-canvas {
+  width: 100%;
+  height: 75%; }
+
+/*# sourceMappingURL=style.css.map */
