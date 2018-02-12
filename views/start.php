@@ -16,7 +16,7 @@ $testArray = $db->returnTests(); // getting tests from db
 
 
 <form class="form" action="../backend/testLogic.php" method="POST">
-    <div class="title">CHOOSE YOUR TESTINY</div>
+    <div class="form-title">CHOOSE YOUR TESTINY</div>
 
     <div class="form-name">
         name: <input class="form-name-input" type="text" name="name" value="stinky" required>
